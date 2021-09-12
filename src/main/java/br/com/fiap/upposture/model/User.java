@@ -26,23 +26,10 @@ public class User {
     @NotBlank(message = "O campo password é obrigatório")
     private String password;
 
-    @Size(max = 11, message = "O cpf deve ter no máximo 11 caracteres")
-    @NotBlank(message = "O campo cpf é obrigatório")
-    private String cpf;
-
-    @Size(max = 20, message = "O telefone deve ter no máximo 100 caracteres")
-    @NotBlank(message = "O campo phone é obrigatório")
-    private String phone;
-
     @Size(max = 100 , message = "O nome deve ter no máximo 100 caracteres")
     @NotBlank(message = "O campo name é obrigatório")
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private StatusEnum status;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "O campo gender é obrigatório")
-    private GenderEnum gender;
 
 }

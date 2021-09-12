@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" media="screen" />
 
 </head>
 
@@ -21,17 +21,19 @@
                 <h3>Welcome,</h3>
                 <p class="bold">Log in to continue!</p>
             </div>
-            <form class="form">
+            <form class="form" action="/find" method="post" th:object="${loginResource}">
                 <fieldset class="roundness">
-                    <legend>Username</legend>
-                    <input type="text" id="fusername" name="username" placeholder="username" class="cnavy">
+                    <legend>Email</legend>
+                    <input type="text" id="femail" name="email" placeholder="email" class="cnavy" th:field="*{email}">
+                    <span th:errors="*{email}"></span>
                 </fieldset>
                 <fieldset class="roundness">
                     <legend>Password</legend>
-                    <input type="password" id="fpassword" name="password" placeholder="password" class="cnavy">
+                    <input type="password" id="fpassword" name="password" placeholder="password" class="cnavy" th:field="*{password}">
+                    <span th:errors="*{password}"></span>
                 </fieldset>
                 <a class="tip bold italic">Forgot password?</a>
-                <input type="button" value="Login" class="btn btn-white btn-full roundness shadow">
+                <button  class="btn btn-white btn-full roundness shadow">Login</button>
                 <div class="fremember">
                     <p class="tip bold">Remember me</p>
                     <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
