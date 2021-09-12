@@ -34,7 +34,7 @@ public class UserController {
     @PostMapping("/find")
     public String login(@Valid User user, BindingResult result) {
         if (result.hasErrors()) return "login";
-        return "logado";
+        return "home";
     }
 }
 
