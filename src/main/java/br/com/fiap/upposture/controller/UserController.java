@@ -30,15 +30,15 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String find(LoginResource loginResource) {
+    public String find(User user) {
         return "login";
     }
 
     @PostMapping("/find")
-    public String login(@Valid LoginResource loginResource, BindingResult result) {
+    public String login(@Valid User user, BindingResult result) {
         System.out.println(result.toString());
         if (result.hasErrors()) return "login";
-        if (repository.findByEmailAndPassword(loginResource.getEmail(), loginResource.getPassword()).isEmpty() ) return "login";
+        if (repository.findByEmailAndPassword(user.getEmail(), user.getPassword()).isEmpty() ) return "login";
 
         return "home";
     }

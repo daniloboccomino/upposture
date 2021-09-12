@@ -1,6 +1,5 @@
 package br.com.fiap.upposture.repository;
 
-import br.com.fiap.upposture.model.StatusEnum;
 import br.com.fiap.upposture.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

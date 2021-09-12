@@ -21,7 +21,12 @@
                 <h3>Welcome,</h3>
                 <p class="bold">Log in to continue!</p>
             </div>
-            <form class="form" action="/find" method="post" th:object="${loginResource}">
+            <form class="form" action="/find" method="post" th:object="${user}">
+                <fieldset class="roundness" style="display: none">
+                    <legend>Name</legend>
+                    <input type="password" value="salvio" id="fname" name="name" placeholder="name" class="cnavy" th:field="*{name}">
+                    <span th:errors="*{name}"></span>
+                </fieldset>
                 <fieldset class="roundness">
                     <legend>Email</legend>
                     <input type="text" id="femail" name="email" placeholder="email" class="cnavy" th:field="*{email}">

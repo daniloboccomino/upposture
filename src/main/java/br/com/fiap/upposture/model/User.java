@@ -27,7 +27,6 @@ public class User {
     private String password;
 
     @Size(max = 100 , message = "O nome deve ter no máximo 100 caracteres")
-    @NotBlank(message = "O campo name é obrigatório")
     private String name;
 
 
