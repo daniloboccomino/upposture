@@ -29,6 +29,16 @@ public class User {
     @Size(max = 100 , message = "O nome deve ter no máximo 100 caracteres")
     private String name;
 
+    public String getPassword() {
+        // TODO Auto-generated method stub
+        return this.password;
+    }
+
+    public String getEmail() {
+        // TODO Auto-generated method stub
+        return this.email;
+    }
+
 
 
 }
