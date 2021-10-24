@@ -1,0 +1,36 @@
+node {
+
+   stage('Extrair Codigo Fonte') {
+         echo 'Extraindo codigo fonte...'
+	    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, 
+			extensions: [], submoduleCfg: [], userRemoteConfigs: 
+			[[url: 'https://github.com/daniloboccomino/upposture.git']]])
+         
+   }
+
+   stage('Build') {
+      echo 'Realizando o Build'
+      sh '/opt/maven/bin/mvn clean install'
+   }
+
+   stage("Confirmação") {
+        script {
+               env.CONFIRM = input message: 'Confirma a execução do deploy?',
+parameters: [choice(name: 'CONFIRM', choices: 'Sim\nNao', description: 'Qual opção deve ser escolhida?')]
+           }
+}
+
+   stage('Deploy') {
+       if( env.CONFIRM == 'Sim' ){
+           
+           echo 'Realizando o Deploy em Desenvolvimento...'
+           sh 'pwd'
+           sh 'ls'
+           sh '/opt/maven/bin/mvn spring-boot:run'
+            
+       } else {
+           echo 'Deploy não autorizado.'
+       }
+  }
+
+}
